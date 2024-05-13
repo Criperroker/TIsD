@@ -30,8 +30,8 @@ pg.time.set_timer(DAY_EVENT, 3000)
 INCREASE_MONEY = pg.USEREVENT + 2
 pg.time.set_timer(INCREASE_MONEY, 1000)
 
-font = pg.font.Font("TID/Game_ind/Better VCR 6.1.ttf", 20)
-font_mini = pg.font.Font("TID/Game_ind/Better VCR 6.1.ttf", 10)
+font = pg.font.Font("Game_ind/Better VCR 6.1.ttf", 20)
+font_mini = pg.font.Font("Game_ind/Better VCR 6.1.ttf", 10)
 
 names = ["Walton", "Bennett", "Paul", "Andrea", "Stewart", "Stefan", "Lee", "Sally", "Wade", "Ava", "Abby", "Dwight",
          "Goodwin", "Don", "Valerie", "Zach", "Leonard", "Gregory", "Lane", "Jaylee", "Alvin", "Alina", "Margaret",
@@ -126,29 +126,29 @@ def generate_random_orders(n):
     return orders
 
 
-background_image = load_image("TID/Game_ind/GUI/Backraund/Backraund.png", screen_width, screen_height)
+background_image = load_image("Game_ind/GUI/Base_GUI/Backraund/Backraund.png", screen_width, screen_height)
 
 conveyor_images_path = [
-    "TID/Game_ind/Base/conveir_all/conveir_up/1c/conveir_up_64x64.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/2c/conveir_up_64x64_2.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/3c/conveir_up_64x64_3.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/4c/conveir_up_64x64_4.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/5c/conveir_up_64x64_5.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/6c/conveir_up_64x64_6.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/7c/conveir_up_64x64_7.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/8c/conveir_up_64x64_8.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/9c/conveir_up_64x64_9.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/10c/conveir_up_64x64_10.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/11c/conveir_up_64x64_11.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/12c/conveir_up_64x64_12.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/13c/conveir_up_64x64_13.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/14c/conveir_up_64x64_14.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/15c/conveir_up_64x64_15.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/16c/conveir_up_64x64_16.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/17c/conveir_up_64x64_17.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/18c/conveir_up_64x64_18.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/19c/conveir_up_64x64_19.png",
-    "TID/Game_ind/Base/conveir_all/conveir_up/20c/conveir_up_64x64_20.png"
+    "Game_ind/Base/conveir_all/conveir_up/1c/conveir_up_64x64.png",
+    "Game_ind/Base/conveir_all/conveir_up/2c/conveir_up_64x64_2.png",
+    "Game_ind/Base/conveir_all/conveir_up/3c/conveir_up_64x64_3.png",
+    "Game_ind/Base/conveir_all/conveir_up/4c/conveir_up_64x64_4.png",
+    "Game_ind/Base/conveir_all/conveir_up/5c/conveir_up_64x64_5.png",
+    "Game_ind/Base/conveir_all/conveir_up/6c/conveir_up_64x64_6.png",
+    "Game_ind/Base/conveir_all/conveir_up/7c/conveir_up_64x64_7.png",
+    "Game_ind/Base/conveir_all/conveir_up/8c/conveir_up_64x64_8.png",
+    "Game_ind/Base/conveir_all/conveir_up/9c/conveir_up_64x64_9.png",
+    "Game_ind/Base/conveir_all/conveir_up/10c/conveir_up_64x64_10.png",
+    "Game_ind/Base/conveir_all/conveir_up/11c/conveir_up_64x64_11.png",
+    "Game_ind/Base/conveir_all/conveir_up/12c/conveir_up_64x64_12.png",
+    "Game_ind/Base/conveir_all/conveir_up/13c/conveir_up_64x64_13.png",
+    "Game_ind/Base/conveir_all/conveir_up/14c/conveir_up_64x64_14.png",
+    "Game_ind/Base/conveir_all/conveir_up/15c/conveir_up_64x64_15.png",
+    "Game_ind/Base/conveir_all/conveir_up/16c/conveir_up_64x64_16.png",
+    "Game_ind/Base/conveir_all/conveir_up/17c/conveir_up_64x64_17.png",
+    "Game_ind/Base/conveir_all/conveir_up/18c/conveir_up_64x64_18.png",
+    "Game_ind/Base/conveir_all/conveir_up/19c/conveir_up_64x64_19.png",
+    "Game_ind/Base/conveir_all/conveir_up/20c/conveir_up_64x64_20.png"
 
 ]
 
@@ -160,7 +160,7 @@ class Button:
         self.func = func
         self.x = x
         self.y = y
-        self.image = load_image('TID/Game_ind/GUI/Button_GUI/Button_64x64.png', total_width, total_height)
+        self.image = load_image('Game_ind/GUI/Base_GUI/Button_GUI/Button.png', total_width, total_height)
         # self.rect = self.image.get_bounding_rect()
         self.visible_rect = pg.Rect(x, y + 24, visible_width, visible_height)
 
@@ -269,13 +269,13 @@ class Game:
         pg.time.set_timer(self.DECREASE, 1000)
 
         self.conveyor_image = load_image(
-            "TID/Game_ind/Base/conveir_all/conveir_up/1c/conveir_up_64x64.png", 400, 700)
-        self.money_image = load_image("TID/Game_ind/GUI/money/money_64x64.png", 64, 64)
-        self.popularity_image = load_image("TID/Game_ind/GUI/Popularity/100%/popularity100_64x64.png", 64, 64)
-        self.windowGUI = load_image("TID/Game_ind/GUI/window_GUI/window_gui_64x64.png", 390, 440)
-        self.ButtonGuiOrder = Button("Orders", 650, 10, 100, 56, 100, 100, func=self.toggle_orders_window)
-        self.ButtonGuiShop = Button("Shop", 780, 10, 100, 56 ,100, 100, func=self.toggle_shop_window)
-        self.OrderGui = load_image("TID/Game_ind/GUI/order_mini/order_mini.png", 346, 256)
+            "Game_ind/Base/conveir_all/conveir_up/1c/conveir_up_64x64.png", 400, 700)
+        self.money_image = load_image("Game_ind/GUI/Base_GUI/money/money_64x64.png", 64, 64)
+        self.popularity_image = load_image("Game_ind/GUI/Base_GUI/Popularity/100%/popularity100_64x64.png", 64, 64)
+        self.windowGUI = load_image("Game_ind/GUI/Base_GUI/window_GUI/window_gui_64x64.png", 390, 440)
+        self.ButtonGuiOrder = Button("Orders", 650, 10, 124, 58, 120, 120, func=self.toggle_orders_window)
+        self.ButtonGuiShop = Button("Shop", 790, 10, 122, 58, 120, 120, func=self.toggle_shop_window)
+        self.OrderGui = load_image("Game_ind/GUI/Order_GUI/order_mini/order_mini.png", 346, 256)
 
         pg.time.set_timer(self.money + 1, 500)
 
@@ -396,7 +396,7 @@ class Game:
 
         if self.selected_order:
             # Путь к изображению окна информации о заказе
-            info_window_image_path = "TID/Game_ind/GUI/window_order_open/window_order_open.png"
+            info_window_image_path = "Game_ind/GUI/Order_GUI/window_order_open/window_order_open.png"
             # Загрузка и отрисовка окна информации о заказе
             info_window_image = load_image(info_window_image_path, self.info_window_width, self.info_window_height)
             info_window_x = 50  # Начальная X-координата для окна информации
