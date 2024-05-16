@@ -48,6 +48,121 @@ surnames = ["Barnett", "Hammond", "Tings", "Richards", "Malone", "Wheeler", "Hun
             "Bishop", "Stokes", "Burrows", "Hicks", "Rhodes", "Tate", "Hargraves", "Simmons", "Cantrell", "Eland",
             "Jensen", "Stevens", "Woolridge", "Garraway", "Cook", "Nicholas", "Smart", "Schmidt", "Anchondo", "Fabela"]
 
+shop_items = {
+    "Carbon fiber cladding":
+        {
+            "price": 100,
+            "description": "Its carbon fiber cladding",
+            "quality": 50,
+            "category": "appearance"
+        },
+    "Glass":
+        {
+            "price": 100,
+            "description": "Its glass",
+            "quality": 50,
+            "category": "appearance"
+        },
+    "Bumper":
+        {
+            "price": 100,
+            "description": "Its bumper",
+            "quality": 50,
+            "category": "appearance"
+        },
+    "Doors":
+        {
+            "price": 100,
+            "description": "Its doors",
+            "quality": 50,
+            "category": "appearance"
+        },
+    "Headlights":
+        {
+            "price": 100,
+            "description": "Its headlights",
+            "quality": 50,
+            "category": "appearance"
+        },
+    "Rear view mirrors":
+        {
+            "price": 100,
+            "description": "Its rear view mirrors",
+            "quality": 50,
+            "category": "appearance"
+        },
+    "Gearbox":
+        {
+            "price": 100,
+            "description": "Its gearbox",
+            "quality": 50,
+            "category": "transmission"
+        },
+    "Engine":
+        {
+            "price": 100,
+            "description": "Its trunk",
+            "quality": 50,
+            "category": "transmission"
+        },
+    "gimbal drive":
+        {
+            "price": 100,
+            "description": "Its gimbal drive",
+            "quality": 50,
+            "category": "transmission"
+        },
+    "Main transfer":
+        {
+            "price": 100,
+            "description": "Its Main transfer",
+            "quality": 50,
+            "category": "transmission"
+        },
+    "Wheels":
+        {
+            "price": 100,
+            "description": "Its wheels",
+            "quality": 50,
+            "category": "transmission"
+        },
+    "Helm":
+        {
+            "price": 100,
+            "description": "Its helm",
+            "quality": 50,
+            "category": "management mechanisms"
+        },
+    "Shock absorbers":
+        {
+            "price": 100,
+            "description": "Its shock absorbers",
+            "quality": 50,
+            "category": "management mechanisms"
+        },
+    "Elastic spring":
+        {
+            "price": 100,
+            "description": "Its elastic spring",
+            "quality": 50,
+            "category": "management mechanisms"
+        },
+    "Radio":
+        {
+            "price": 100,
+            "description": "Its radio",
+            "quality": 50,
+            "category": "salon"
+        },
+    "Seat":
+        {
+            "price": 100,
+            "description": "Its seat",
+            "quality": 50,
+            "category": "salon"
+        }
+}
+
 
 def wrap_text(text, font, max_width):
     """
@@ -226,6 +341,12 @@ class Order:
         pass
 
 
+class Shop:
+    def __init__(self, price, quality, ):
+        self.price = price
+        self.quality = quality
+
+
 class Vehicle:
     def __init__(self, speed, power, mass):
         self.speed = speed
@@ -334,6 +455,7 @@ class Game:
             screen.blit(font_mini.render(order_text, True, WHITE), (488, y_start + 28))
 
             y_start += 77
+
     def toggle_shop_window(self):
         if self.show_orders_window == False:
             self.show_shop_window = not self.show_shop_window
