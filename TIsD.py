@@ -51,30 +51,30 @@ surnames = ["Barnett", "Hammond", "Tings", "Richards", "Malone", "Wheeler", "Hun
 shop_items = {
     "Carbon fiber cladding":
         {
-            "price": 100,
+            "price": 500,
             "description": "Its carbon fiber cladding",
             "quality": 50,
             "category": "appearance"
         },
     "Glass":
         {
-            "price": 100,
+            "price": 50,
             "description": "Its glass",
-            "quality": 50,
+            "quality": 502,
             "category": "appearance"
         },
     "Bumper":
         {
             "price": 100,
             "description": "Its bumper",
-            "quality": 50,
+            "quality": 504,
             "category": "appearance"
         },
     "Doors":
         {
             "price": 100,
             "description": "Its doors",
-            "quality": 50,
+            "quality": 505,
             "category": "appearance"
         },
     "Headlights":
@@ -240,6 +240,20 @@ def generate_random_orders(n):
         orders.append(Order(vehicle_type, quality, price, deadline, name, surname, description, popularity))
     return orders
 
+def generate_shop_window(shop_items):
+    items_all = []
+    for item in shop_items:
+        name = item
+        quality = shop_items[item]['quality']
+        price = shop_items[item]['price']
+        description = shop_items[item]['description']
+        category = shop_items[item]['category']
+        items_all.append(Shop(price=price, quality=quality, category=category, name=name, description=description))
+
+    return items_all
+
+
+
 
 background_image = load_image("Game_ind/GUI/Base_GUI/Backraund/Backraund.png", screen_width, screen_height)
 
@@ -342,9 +356,16 @@ class Order:
 
 
 class Shop:
-    def __init__(self, price, quality, ):
+    def __init__(self, price, quality, category, name, description):
         self.price = price
         self.quality = quality
+        self.name = name
+        self.description = description
+        self.category = category
+        self.rect = pg.Rect(0, 0, 257, 72)
+
+    def buy(self):
+        pass
 
 
 class Vehicle:
@@ -377,12 +398,16 @@ class Game:
         self.money_sec = 1
         self.chance_of_orders = 10
         self.orders = []
+        self.items_all = generate_shop_window(shop_items)
         self.conveyor = Conveyor()
         self.day = 0
         self.selected_order = None
 
         self.order_start_x = 473  # X-координата, с которой начинается первый заказ
         self.order_start_y = 30  # Y-координата, с которой начинается первый заказ
+
+        self.items_start_x = 480
+        self.items_start_y = 41
 
         self.INCREASE_COINS = pg.USEREVENT + 2
         pg.time.set_timer(self.INCREASE_COINS, 1000)
@@ -397,6 +422,7 @@ class Game:
         self.ButtonGuiOrder = Button("Orders", 650, 10, 124, 58, 120, 120, func=self.toggle_orders_window)
         self.ButtonGuiShop = Button("Shop", 790, 10, 122, 58, 120, 120, func=self.toggle_shop_window)
         self.OrderGui = load_image("Game_ind/GUI/Order_GUI/order_mini/order_mini.png", 346, 256)
+        self.showcase_of_products = load_image("Game_ind/GUI/Shop_GUI/showcase_of_products.png", 260, 220)
 
         pg.time.set_timer(self.money + 1, 500)
 
@@ -466,7 +492,19 @@ class Game:
             self.show_orders_window = not self.show_orders_window
 
     def draw_shop_window(self):
+        padding = 80
         screen.blit(self.windowGUI, (450, 97))
+        for index, item in enumerate(self.items_all):
+            item_y_position = self.items_start_y + (index * padding)
+            item.rect.topleft = (self.items_start_x, item_y_position)
+            # Отрисовка каждого заказа здесь
+            screen.blit(self.showcase_of_products, item.rect.topleft)
+
+        for index, item in enumerate(self.items_all):
+            items_y_position = self.items_start_y + (index * padding)
+            item.rect.topleft = (self.items_start_x, items_y_position + 90)
+            #pg.draw.rect(screen, "Black", item.rect)
+
 
     def update(self):
         pass
@@ -558,6 +596,12 @@ while running:
                             # Иначе открываем окно информации для нового заказа
                             game.selected_order = order
                         break  # Выходим из цикла, так как заказ найден
+
+            if game.show_shop_window:
+                for item in game.items_all:
+                    if item.rect.collidepoint(event.pos):
+                        if game.money >= item.price:
+                            game.money -= item.price
 
         if event.type == DAY_EVENT:
             game.day += 1
