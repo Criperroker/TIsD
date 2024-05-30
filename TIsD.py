@@ -54,112 +54,128 @@ shop_items = {
             "price": 500,
             "description": "Its carbon fiber cladding",
             "quality": 50,
-            "category": "appearance"
+            "category": "appearance",
+            "image": "123"
         },
     "Glass":
         {
             "price": 50,
             "description": "Its glass",
             "quality": 502,
-            "category": "appearance"
+            "category": "appearance",
+            "image": "123"
         },
     "Bumper":
         {
             "price": 100,
             "description": "Its bumper",
             "quality": 504,
-            "category": "appearance"
+            "category": "appearance",
+            "image": "123"
         },
     "Doors":
         {
             "price": 100,
             "description": "Its doors",
             "quality": 505,
-            "category": "appearance"
+            "category": "appearance",
+            "image": "123"
         },
     "Headlights":
         {
             "price": 100,
             "description": "Its headlights",
             "quality": 50,
-            "category": "appearance"
+            "category": "appearance",
+            "image": "123"
         },
     "Rear view mirrors":
         {
             "price": 100,
             "description": "Its rear view mirrors",
             "quality": 50,
-            "category": "appearance"
+            "category": "appearance",
+            "image": "123"
         },
     "Gearbox":
         {
             "price": 100,
             "description": "Its gearbox",
             "quality": 50,
-            "category": "transmission"
+            "category": "transmission",
+            "image": "123"
         },
     "Engine":
         {
             "price": 100,
             "description": "Its trunk",
             "quality": 50,
-            "category": "transmission"
+            "category": "transmission",
+            "image": "123"
         },
     "gimbal drive":
         {
             "price": 100,
             "description": "Its gimbal drive",
             "quality": 50,
-            "category": "transmission"
+            "category": "transmission",
+            "image": "123"
         },
     "Main transfer":
         {
             "price": 100,
             "description": "Its Main transfer",
             "quality": 50,
-            "category": "transmission"
+            "category": "transmission",
+            "image": "123"
         },
     "Wheels":
         {
             "price": 100,
             "description": "Its wheels",
             "quality": 50,
-            "category": "transmission"
+            "category": "transmission",
+            "image": "123"
         },
     "Helm":
         {
             "price": 100,
             "description": "Its helm",
             "quality": 50,
-            "category": "management mechanisms"
+            "category": "management mechanisms",
+            "image": "123"
         },
     "Shock absorbers":
         {
             "price": 100,
             "description": "Its shock absorbers",
             "quality": 50,
-            "category": "management mechanisms"
+            "category": "management mechanisms",
+            "image": "123"
         },
     "Elastic spring":
         {
             "price": 100,
             "description": "Its elastic spring",
             "quality": 50,
-            "category": "management mechanisms"
+            "category": "management mechanisms",
+            "image": "123"
         },
     "Radio":
         {
             "price": 100,
             "description": "Its radio",
             "quality": 50,
-            "category": "salon"
+            "category": "salon",
+            "image": "123"
         },
     "Seat":
         {
             "price": 100,
             "description": "Its seat",
             "quality": 50,
-            "category": "salon"
+            "category": "salon",
+            "image": "123"
         }
 }
 
@@ -240,6 +256,7 @@ def generate_random_orders(n):
         orders.append(Order(vehicle_type, quality, price, deadline, name, surname, description, popularity))
     return orders
 
+
 def generate_shop_window(shop_items):
     items_all = []
     for item in shop_items:
@@ -251,8 +268,6 @@ def generate_shop_window(shop_items):
         items_all.append(Shop(price=price, quality=quality, category=category, name=name, description=description))
 
     return items_all
-
-
 
 
 background_image = load_image("Game_ind/GUI/Base_GUI/Backraund/Backraund.png", screen_width, screen_height)
@@ -362,7 +377,7 @@ class Shop:
         self.name = name
         self.description = description
         self.category = category
-        self.rect = pg.Rect(0, 0, 257, 72)
+        self.rect = pg.Rect(0, 0, 278, 71)
 
     def buy(self):
         pass
@@ -422,7 +437,7 @@ class Game:
         self.ButtonGuiOrder = Button("Orders", 650, 10, 124, 58, 120, 120, func=self.toggle_orders_window)
         self.ButtonGuiShop = Button("Shop", 790, 10, 122, 58, 120, 120, func=self.toggle_shop_window)
         self.OrderGui = load_image("Game_ind/GUI/Order_GUI/order_mini/order_mini.png", 346, 256)
-        self.showcase_of_products = load_image("Game_ind/GUI/Shop_GUI/showcase_of_products.png", 260, 220)
+        self.showcase_of_products = load_image("Game_ind/GUI/Shop_GUI/showcase_of_products.png", 280, 220)
 
         pg.time.set_timer(self.money + 1, 500)
 
@@ -504,6 +519,19 @@ class Game:
             items_y_position = self.items_start_y + (index * padding)
             item.rect.topleft = (self.items_start_x, items_y_position + 90)
             #pg.draw.rect(screen, "Black", item.rect)
+
+        y_start = 140
+
+        for item in self.items_all:
+            shop_name = f"{item.name}"
+            shop_price = f"{item.price}"
+            shop_quality = f"Quality: {item.quality}"
+            screen.blit(font_mini.render(shop_name, True, BLACK), (575, y_start))
+            screen.blit(font_mini.render(shop_price, True, BLACK), (720, y_start+40))
+            screen.blit(font_mini.render(shop_quality, True, BLACK), (576, y_start+40))
+
+            y_start += 80
+
 
 
     def update(self):
